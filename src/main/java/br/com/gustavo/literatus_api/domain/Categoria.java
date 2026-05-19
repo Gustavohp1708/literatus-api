@@ -19,5 +19,7 @@ public class Categoria {
     @Column(nullable = false, unique = true)
     String nome;
 
-
+    public Categoria(CriarCategoriaRequest request){
+        this.nome = request.nome();
+    }
 }
