@@ -1,6 +1,8 @@
 package br.com.gustavo.literatus_api.domain;
 
+import br.com.gustavo.literatus_api.dto.categoriaDto.CriarCategoriaRequestDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ public class Categoria {
     @Column(nullable = false, unique = true)
     String nome;
 
-    public Categoria(CriarCategoriaRequest request){
+    public Categoria(CriarCategoriaRequestDto request){
         this.nome = request.nome();
     }
+
+
 }

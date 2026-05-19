@@ -2,8 +2,8 @@ package br.com.gustavo.literatus_api.dto.livroDto;
 
 import br.com.gustavo.literatus_api.domain.Categoria;
 import br.com.gustavo.literatus_api.domain.Livro;
+import br.com.gustavo.literatus_api.dto.categoriaDto.CategoriaResponse;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public record LivroResponseDto(
 
@@ -12,7 +12,7 @@ public record LivroResponseDto(
         String autor,
         String isbn,
         Integer anoPublicacao,
-        Categoria categoria
+        CategoriaResponse categoria
 ) {
 
     public LivroResponseDto(Livro livro) {
@@ -22,6 +22,7 @@ public record LivroResponseDto(
                 livro.getAutor(),
                 livro.getIsbn(),
                 livro.getAnoPublicacao(),
-                livro.getCategoria());
+                new CategoriaResponse(livro.getCategoria())
+        );
     }
 }
