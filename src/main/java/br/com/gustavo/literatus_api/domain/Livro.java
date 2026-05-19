@@ -15,14 +15,22 @@ public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String titulo;
-    String autor;
-    String isbn;
-    int anoPublicacao;
+    private Long id;
+
+    @Column(nullable = false)
+    private String titulo;
+
+    @Column(nullable = false)
+    private String autor;
+
+    @Column(unique = true, nullable = false)
+    private String isbn;
+
+    Integer anoPublicacao;
+
     @ManyToOne
-    @Column(nullable = false, name = "categoria_id")
-    Categoria categoria;
+    @JoinColumn(nullable = false, name = "categoria_id")
+    private Categoria categoria;
 
 
     public Livro(CriarLivroRequestDto request){
