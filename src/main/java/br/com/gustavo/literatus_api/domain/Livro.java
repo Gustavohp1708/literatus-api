@@ -1,7 +1,9 @@
 package br.com.gustavo.literatus_api.domain;
 
+import br.com.gustavo.literatus_api.dto.livroDto.AlterarLivroRequestDto;
 import br.com.gustavo.literatus_api.dto.livroDto.CriarLivroRequestDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,7 @@ public class Livro {
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
+    private @NotBlank String titulo;
 
     @Column(nullable = false)
     private String autor;
@@ -27,7 +29,7 @@ public class Livro {
     @Column(unique = true, nullable = false)
     private String isbn;
 
-    Integer anoPublicacao;
+    private Integer anoPublicacao;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "categoria_id")
@@ -36,9 +38,9 @@ public class Livro {
 
     public Livro(CriarLivroRequestDto request){
         this.titulo = request.titulo();
-        this.titulo = request.autor();
-        this.titulo = request.isbn();
-        this.titulo = request.anoPublicacao();
+        this.autor = request.autor();
+        this.isbn = request.isbn();
+        this.anoPublicacao = request.anoPublicacao();
         this.categoria = new Categoria(request.categoria());
     }
 
@@ -63,8 +65,5 @@ public class Livro {
         if (request.categoria() != null){
             this.categoria = request.categoria();
         }
-
-
-
     }
 }

@@ -14,7 +14,7 @@ public record CriarLivroRequestDto(
         @NotBlank
         String isbn,
 
-        String anoPublicacao,
+        Integer anoPublicacao,
 
         @NotBlank
         Categoria categoria
