@@ -1,5 +1,6 @@
 package br.com.gustavo.literatus_api.domain;
 
+import br.com.gustavo.literatus_api.dto.livroDto.CriarLivroRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
