@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ServiceCategoria {
@@ -15,6 +16,7 @@ public class ServiceCategoria {
     @Autowired
     private CategoriaRepository repository;
 
+    @Transactional
     public CategoriaResponse criarCategoria(CriarCategoriaRequestDto request){
         var categoria = new Categoria(request);
         repository.save(categoria);
