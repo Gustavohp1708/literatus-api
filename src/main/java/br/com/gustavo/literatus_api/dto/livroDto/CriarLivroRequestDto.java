@@ -1,6 +1,6 @@
 package br.com.gustavo.literatus_api.dto.livroDto;
 
-import br.com.gustavo.literatus_api.domain.Categoria;
+import br.com.gustavo.literatus_api.dto.categoriaDto.CriarCategoriaRequestDto;
 import jakarta.validation.constraints.NotBlank;
 
 public record CriarLivroRequestDto(
@@ -17,6 +17,6 @@ public record CriarLivroRequestDto(
         Integer anoPublicacao,
 
         @NotBlank
-        Categoria categoria
+        CriarCategoriaRequestDto categoria
 ) {
 }
