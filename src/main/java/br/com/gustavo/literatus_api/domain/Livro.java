@@ -36,34 +36,36 @@ public class Livro {
     private Categoria categoria;
 
 
-    public Livro(CriarLivroRequestDto request){
+    public Livro(CriarLivroRequestDto request, Categoria categoria) {
         this.titulo = request.titulo();
         this.autor = request.autor();
         this.isbn = request.isbn();
         this.anoPublicacao = request.anoPublicacao();
-        this.categoria = new Categoria(request.categoria());
+        this.categoria = categoria;
     }
 
-    public void alterarLivro(AlterarLivroRequestDto request){
+    public void alterarLivro(AlterarLivroRequestDto request, Categoria novaCategoria){
 
-        if (request.titulo() != null){
+        if (request.titulo() != null && !request.titulo().isBlank()) {
             this.titulo = request.titulo();
         }
 
-        if (request.autor() != null){
+        if (request.autor() != null && !request.autor().isBlank()) {
             this.autor = request.autor();
         }
 
-        if (request.isbn() != null){
+        if (request.isbn() != null && !request.isbn().isBlank()) {
             this.isbn = request.isbn();
         }
 
-        if (request.anoPublicacao() != null){
+        if (request.anoPublicacao() != null) {
             this.anoPublicacao = request.anoPublicacao();
         }
 
-        if (request.categoria() != null){
-            this.categoria = request.categoria();
+        if (novaCategoria != null) {
+            this.categoria = novaCategoria;
         }
     }
+
+
 }

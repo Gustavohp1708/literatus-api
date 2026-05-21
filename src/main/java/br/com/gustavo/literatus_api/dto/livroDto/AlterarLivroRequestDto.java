@@ -1,28 +1,19 @@
 package br.com.gustavo.literatus_api.dto.livroDto;
 
 import br.com.gustavo.literatus_api.domain.Categoria;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record AlterarLivroRequestDto(
 
-        @NotNull
+
         Long id,
-
-        @NotBlank
         String titulo,
-
-        @NotBlank
         String autor,
-
-        @NotBlank
         String isbn,
-
         Integer anoPublicacao,
-
-        @NotBlank
-        Categoria categoria
-
-
+        @JsonProperty("categoriaId")
+        Long categoriaId
 ) {
 }
